@@ -24,27 +24,28 @@ class Alphabet:
 
 class EngAlphabet(Alphabet):
     __letters_num=26
-    def __init__(self,leng,letters): #Инициализатор дочернего класса
-        super().__init__(leng,letters)#Инициализатор родительского класса
-        self.leng = 'En'
-        self.letters=letters
+    default_name='EN'
+    default_letters=string.ascii_uppercase
+    def __init__(self): #Инициализатор дочернего класса
+        super().__init__(EngAlphabet.default_name,EngAlphabet.default_letters)#Инициализатор родительского класса
+
 
     def is_en_letter(self,bukva):
-        if bukva in self.letters:
+        if bukva in EngAlphabet.default_name:
             print(f'Буква {bukva} принадлежит английскому алфавита ')
         else:
             print(f'Буква {bukva} не принадлежит английскому алфавита ')
     def letters_num(self):
-        return self.__letters_num
+        return EngAlphabet.__letters_num
     @staticmethod
     def example():
         Text = 'Every day in elementary school in America begins at 9.20 a.m. Children have classes till 3.15 p.m. At 12 o’clock children have lunch. Many boys and girls bring their lunch from home. But some of them go for lunch to a school cafeteria.'
         print(Text)
     def vivod(self):
-        print(self.leng, self.letters)
+        print(EngAlphabet.default_name, EngAlphabet.default_letters)
 
-letters=string.ascii_uppercase
-English=EngAlphabet('En',letters)
+#letters=string.ascii_uppercase
+English=EngAlphabet()
 English.vivod()
 print('Буквы английского алфавита  ', English.letters) #Буквы алфавита
 print('Количество букв в алфавите ',English.letters_num())
